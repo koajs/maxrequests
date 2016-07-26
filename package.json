@@ -1,0 +1,35 @@
+{
+  "name": "koa-maxrequests",
+  "version": "1.0.0",
+  "description": "Limit max requests on each http keepalive connection",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "mocha -R spec test/*.test.js",
+    "test-cov": "istanbul cover _mocha -- test/*.test.js",
+    "ci": "npm run lint && npm run test-cov",
+    "lint": "eslint test index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koajs/maxrequests.git"
+  },
+  "author": "fengmk2 <fengmk2@gmail.com> (https://fengmk2.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/koajs/maxrequests/issues"
+  },
+  "homepage": "https://github.com/koajs/maxrequests#readme",
+  "devDependencies": {
+    "egg-ci": "^1.0.3",
+    "istanbul": "^0.4.4",
+    "koa": "^1.2.1",
+    "mocha": "^2.5.3",
+    "urllib": "^2.11.0"
+  },
+  "ci": {
+    "version": "4, 6"
+  }
+}
