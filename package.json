@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "test": "mocha -R spec test/*.test.js",
-    "test-cov": "istanbul cover _mocha -- test/*.test.js",
+    "test-cov": "istanbul cover node_modules/.bin/_mocha -- test/*.test.js",
     "ci": "npm run lint && npm run test-cov",
     "lint": "eslint test index.js"
   },
