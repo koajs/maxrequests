@@ -36,6 +36,7 @@ const koa = require('koa');
 
 const app = koa();
 app.use(maxrequests({
+  // if keepalive socket hit max requests, response will set `Connection: close` header.
   max: 1000,
 }));
 ```
