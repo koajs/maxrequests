@@ -1,20 +1,29 @@
-'use strict';
+'use strict'
 
-const requests = Symbol('requests');
+const requests = Symbol('requests')
 
-module.exports = options => {
-  options = options || {};
-  options.max = options.max || 1000;
-  return function* maxrequests(next) {
-    const socket = this.socket;
+/**
+ * maxRequests middleware.
+ *
+ * @param {Object} [options]
+ * @return {Function}
+ * @api public
+ */
+module.exports = function (options = { max: 1000 }) {
+  return async function maxRequests (ctx, next) {
+    const { socket } = ctx
+
     if (!socket) {
-      return yield next;
+      return await next()
     }
-    socket[requests] = (socket[requests] || 0) + 1;
-    this.set('X-Current-Requests', socket[requests]);
+
+    socket[requests] = (socket[requests] || 0) + 1
+    ctx.set('X-Current-Requests', socket[requests])
+
     if (socket[requests] >= options.max) {
-      this.set('Connection', 'close');
+      ctx.set('Connection', 'close')
     }
-    yield next;
-  };
-};
+
+    await next()
+  }
+}
