@@ -7,31 +7,46 @@
     "index.js"
   ],
   "scripts": {
-    "test": "mocha -R spec test/*.test.js",
-    "test-cov": "istanbul cover node_modules/.bin/_mocha -- test/*.test.js",
-    "ci": "npm run lint && npm run test-cov",
-    "lint": "eslint test index.js"
+    "lint": "eslint .",
+    "test": "mocha --exit",
+    "test-cov": "nyc npm run test",
+    "ci": "rimraf .nyc_output && npm run lint && npm run test-cov"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/koajs/maxrequests.git"
   },
-  "author": "fengmk2 <fengmk2@gmail.com> (https://fengmk2.com)",
+  "author": {
+    "name": "fengmk2",
+    "email": "fengmk2@gmail.com",
+    "url": "https://fengmk2.com"
+  },
+  "contributors": [
+    {
+      "name": "Imed Jaberi",
+      "email": "imed_jebari@hotmail.fr",
+      "url": "https://www.3imed-jaberi.com"
+    }
+  ],
   "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.5.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "koa": "^2.13.0",
+    "mocha": "^8.1.3",
+    "nyc": "^15.1.0",
+    "rimraf": "^3.0.2",
+    "urllib": "^2.36.1"
+  },
+  "engines": {
+    "node": ">= 10"
+  },
   "bugs": {
     "url": "https://github.com/koajs/maxrequests/issues"
   },
-  "homepage": "https://github.com/koajs/maxrequests#readme",
-  "devDependencies": {
-    "egg-ci": "^1.0.3",
-    "eslint": "^3.1.1",
-    "eslint-config-egg": "^3.1.0",
-    "istanbul": "^0.4.4",
-    "koa": "^1.2.1",
-    "mocha": "^2.5.3",
-    "urllib": "^2.11.0"
-  },
-  "ci": {
-    "version": "4, 6"
-  }
+  "homepage": "https://github.com/koajs/maxrequests#readme"
 }
